@@ -28,4 +28,19 @@ class AuthManager {
         }
     }
     
+    public func signUp(
+        username: String,
+        email: String,
+        password: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        auth.createUser(withEmail: email, password: password) { result, error in
+            guard result != nil, error == nil else {
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
+    
 }
