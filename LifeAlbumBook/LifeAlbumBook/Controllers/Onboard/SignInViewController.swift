@@ -42,7 +42,9 @@ class SignInViewController: UIViewController {
         button.setTitle("Sign In", for: .normal)
         button.titleLabel?.font = UIFont(name: "MarkerFelt-Wide", size: 25)
         button.backgroundColor = .systemOrange
-        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 3
+        button.layer.borderColor = UIColor.systemBrown.cgColor
+        button.layer.cornerRadius = 25
         return button
     }()
     
@@ -77,7 +79,7 @@ class SignInViewController: UIViewController {
         let titleX = (view.width - titleLabel.width) / 2
         titleLabel.frame = CGRect(
             x: titleX,
-            y: view.safeAreaInsets.top+20,
+            y: (view.height)/4,
             width: titleLabel.width,
             height: titleLabel.height
         )
@@ -86,7 +88,7 @@ class SignInViewController: UIViewController {
         
         emailField.frame = CGRect(
             x: 25,
-            y: (view.height-fieldHeight)/2,
+            y: titleLabel.bottom+50,
             width: view.width-50,
             height: fieldHeight
         )
@@ -98,18 +100,19 @@ class SignInViewController: UIViewController {
             height: fieldHeight
         )
         
-        let buttonSize: CGFloat = 300
+        let buttonWidth: CGFloat = 300
+        let buttonHeight: CGFloat = 50
         signInButton.frame = CGRect(
-            x: (view.width-buttonSize)/2,
-            y: passwordField.bottom+20,
-            width: buttonSize,
-            height: 40
+            x: (view.width-buttonWidth)/2,
+            y: passwordField.bottom+60,
+            width: buttonWidth,
+            height: buttonHeight
         )
         registerButton.frame = CGRect(
-            x: (view.width-buttonSize)/2,
+            x: (view.width-buttonWidth)/2,
             y: signInButton.bottom+10,
-            width: buttonSize,
-            height: 40
+            width: buttonWidth,
+            height: buttonHeight
         )
     }
     

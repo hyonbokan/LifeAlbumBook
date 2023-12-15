@@ -12,8 +12,8 @@ class TextField: UITextField {
         super.init(frame: frame)
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         leftViewMode = .always
-        layer.cornerRadius = 20
-        layer.borderWidth = 5
+        layer.cornerRadius = 30
+        layer.borderWidth = 3
         backgroundColor = .secondarySystemBackground
         layer.borderColor = UIColor.systemBrown.cgColor
         autocapitalizationType = .none
