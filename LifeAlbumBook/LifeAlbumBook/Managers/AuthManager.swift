@@ -24,6 +24,7 @@ class AuthManager {
                 print("Could not sign in")
                 return
             }
+            // Add database insertion
             completion(true)
         }
     }
@@ -39,8 +40,13 @@ class AuthManager {
                 completion(false)
                 return
             }
+            // Add database insertion
             completion(true)
         }
+    }
+    
+    public var isSignedIn: Bool {
+        return auth.currentUser != nil
     }
     
 }

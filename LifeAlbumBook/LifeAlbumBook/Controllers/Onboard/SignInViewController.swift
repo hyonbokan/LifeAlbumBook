@@ -65,7 +65,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        navigationController?.navigationBar.tintColor = .label
         addSubviews()
         configureButtons()
     }
@@ -132,25 +132,22 @@ class SignInViewController: UIViewController {
     }
     
     @objc private func didTapSignIn() {
-        AuthManager.shared.signIn(email: "testAcc", password: "123123123") { result in
-            if result {
-                print("\nsign in success!\n")
-            } else {
-                print("\nCould not sign in\n")
-            }
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        guard
+            let email = emailField.text,
+            let password = passwordField.text,
+            !email.trimmingCharacters(in: .whitespaces).isEmpty,
+            !password.isEmpty,
+            password.count >= 6 else {
+            return
         }
+        
     }
     
     @objc private func didTapRegister() {
-        AuthManager.shared.signUp(username: "username", email: "testAcc@gmail.com", password: "123123123") { result in
-            if result {
-                print("\nUser registered\n")
-            } else {
-                print("\nCould not register the user\n")
-            }
-        }
+        let vc = SignUpViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
-
-
 }
 
